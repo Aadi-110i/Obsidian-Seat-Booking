@@ -88,23 +88,17 @@ export default function LandingPage() {
 
           {/* Scrolling Marquee */}
           <div style={{ padding: '24px 0', background: 'var(--bg-secondary)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', overflow: 'hidden', whiteSpace: 'nowrap', display: 'flex' }}>
-             <div style={{ display: 'inline-flex', alignItems: 'center', animation: 'marquee 35s linear infinite' }}>
-               {/* First Set */}
-               <div style={{ display: 'flex', gap: 60, paddingRight: 60, alignItems: 'center' }}>
-                 <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Users size={16} /> Over 5,000 Seats Booked</span>
-                 <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Activity size={16} /> 99.9% Uptime</span>
-                 <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Clock size={16} /> Instant Seat Allocation</span>
-                 <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Building2 size={16} /> Trusted by Top Companies</span>
-               </div>
-               {/* Second Set (Duplicate for seamless loop) */}
-               <div style={{ display: 'flex', gap: 60, paddingRight: 60, alignItems: 'center' }}>
-                 <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Users size={16} /> Over 5,000 Seats Booked</span>
-                 <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Activity size={16} /> 99.9% Uptime</span>
-                 <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Clock size={16} /> Instant Seat Allocation</span>
-                 <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Building2 size={16} /> Trusted by Top Companies</span>
-               </div>
+             <div style={{ display: 'inline-flex', alignItems: 'center', animation: 'marquee 40s linear infinite' }}>
+               {[1, 2, 3].map((set) => (
+                 <div key={set} style={{ display: 'flex', gap: 60, paddingRight: 60, alignItems: 'center' }}>
+                   <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Users size={16} /> Over 5,000 Seats Booked</span>
+                   <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Activity size={16} /> 99.9% Uptime</span>
+                   <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Clock size={16} /> Instant Seat Allocation</span>
+                   <span style={{ display: 'flex', alignItems: 'center', gap: 10, color: 'var(--text-secondary)', fontSize: 14, fontWeight: 500 }}><Building2 size={16} /> Trusted by Top Companies</span>
+                 </div>
+               ))}
              </div>
-             <style>{`@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
+             <style>{`@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-33.3333333333%); } }`}</style>
           </div>
 
           {/* Features Section */}
