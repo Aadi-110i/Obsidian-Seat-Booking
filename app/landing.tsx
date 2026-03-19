@@ -5,7 +5,8 @@ import { useAuth } from '@/context/AuthContext';
 import { SafeSparkles } from '@/components/ui/safe-sparkles';
 import ClientOnly from '@/components/ClientOnly';
 import Link from 'next/link';
-import { ArrowRight, Users, Activity, Clock } from 'lucide-react';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { ArrowRight, Users, Activity, Clock, Armchair, BarChart3, ShieldCheck } from 'lucide-react';
 
 export default function LandingPage() {
   const { user, loading } = useAuth();
@@ -39,6 +40,11 @@ export default function LandingPage() {
       </div>
     }>
       <div className="fade-in">
+        {/* Theme Toggle */}
+        <div style={{ position: 'absolute', top: 24, right: 24, zIndex: 100 }}>
+          <ThemeToggle />
+        </div>
+
         {/* Sparkles Hero Section */}
         <section style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, zIndex: 1, backgroundColor: 'var(--bg-primary)' }}>
@@ -64,16 +70,16 @@ export default function LandingPage() {
                 <style>{`@keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); } 70% { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); } 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); } }`}</style>
               </div>
 
-              <h1 style={{ fontSize: 56, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 20, letterSpacing: '-0.02em' }}>Wissen Seat Booking</h1>
+              <h1 style={{ fontSize: 56, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 20, letterSpacing: '-0.02em' }}>Obsidian Seat Booking</h1>
               <p style={{ fontSize: 20, color: 'var(--text-secondary)', marginBottom: 40, maxWidth: 600 }}>Smart, efficient seat reservation system for modern workspaces</p>
               
               <div style={{ display: 'flex', gap: 16 }}>
                 <Link href="/login">
-                  <button style={{ padding: '14px 32px', background: '#323232', color: '#fff', border: 'none', borderRadius: 9999, fontSize: 16, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.2s', boxShadow: '0 4px 14px rgba(50,50,50,0.2)' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+                  <button style={{ padding: '14px 32px', background: 'var(--text-primary)', color: 'var(--bg-primary)', border: 'none', borderRadius: 9999, fontSize: 16, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.2s', boxShadow: '0 4px 14px rgba(0,0,0,0.1)' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
                     Get Started <ArrowRight size={18} />
                   </button>
                 </Link>
-                <button style={{ padding: '14px 32px', background: 'transparent', color: '#323232', border: '1px solid #C8BDB6', borderRadius: 9999, fontSize: 16, fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'rgba(50,50,50,0.05)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
+                <button style={{ padding: '14px 32px', background: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--border)', borderRadius: 9999, fontSize: 16, fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s' }} onMouseOver={e => e.currentTarget.style.backgroundColor = 'var(--bg-secondary)'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
                   Learn More
                 </button>
               </div>
@@ -105,20 +111,26 @@ export default function LandingPage() {
                 Key Features
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 28 }}>
-                <div className="glass" style={{ padding: 28, textAlign: 'center' }}>
-                  <div style={{ fontSize: 40, marginBottom: 16 }}>🎯</div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 12 }}>Smart Booking</h3>
-                  <p style={{ fontSize: 14, color: 'var(--text-secondary)' }}>Easily book and manage your seats with our intuitive interface</p>
+                <div className="glass" style={{ padding: 32, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ width: 64, height: 64, borderRadius: 16, background: 'rgba(108, 99, 255, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+                    <Armchair size={32} color="#6c63ff" />
+                  </div>
+                  <h3 style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 12 }}>Smart Booking</h3>
+                  <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.6 }}>Easily book and manage your seats with our intuitive, low-latency interface.</p>
                 </div>
-                <div className="glass" style={{ padding: 28, textAlign: 'center' }}>
-                  <div style={{ fontSize: 40, marginBottom: 16 }}>📊</div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 12 }}>Real-time Analytics</h3>
-                  <p style={{ fontSize: 14, color: 'var(--text-secondary)' }}>Track occupancy and usage patterns in real-time</p>
+                <div className="glass" style={{ padding: 32, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ width: 64, height: 64, borderRadius: 16, background: 'rgba(34, 197, 94, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+                    <BarChart3 size={32} color="#22c55e" />
+                  </div>
+                  <h3 style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 12 }}>Real-time Analytics</h3>
+                  <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.6 }}>Track occupancy and usage patterns in real-time with granular dashboard views.</p>
                 </div>
-                <div className="glass" style={{ padding: 28, textAlign: 'center' }}>
-                  <div style={{ fontSize: 40, marginBottom: 16 }}>👥</div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 12 }}>Team Management</h3>
-                  <p style={{ fontSize: 14, color: 'var(--text-secondary)' }}>Organize teams and batches for better coordination</p>
+                <div className="glass" style={{ padding: 32, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ width: 64, height: 64, borderRadius: 16, background: 'rgba(59, 130, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
+                    <ShieldCheck size={32} color="#3b82f6" />
+                  </div>
+                  <h3 style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 12 }}>Team Management</h3>
+                  <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.6 }}>Efficiently coordinate teams and bi-weekly batch rotations automatically.</p>
                 </div>
               </div>
             </div>
@@ -175,7 +187,7 @@ export default function LandingPage() {
                 Join thousands of users managing their seats efficiently
               </p>
               <Link href="/login">
-                <button style={{ padding: '16px 40px', background: '#323232', color: '#fff', border: 'none', borderRadius: 9999, fontSize: 16, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8, transition: 'all 0.2s', boxShadow: '0 4px 14px rgba(50,50,50,0.2)' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+                <button style={{ padding: '16px 40px', background: 'var(--text-primary)', color: 'var(--bg-primary)', border: 'none', borderRadius: 9999, fontSize: 16, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8, transition: 'all 0.2s', boxShadow: '0 4px 14px rgba(0,0,0,0.1)' }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
                   Start Now <ArrowRight size={18} />
                 </button>
               </Link>
