@@ -45,6 +45,21 @@ export async function POST(req: NextRequest) {
         return response;
     } catch (error) {
         console.error('Register error:', error);
-        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+
+        const message = error instanceof Error ? error.message.toLowerCase() : '';
+
+        if (
+            message.includes('database_url') ||
+            message.includes('unable to open database file') ||
+            message.includes('readonly') ||
+            message.includes('no such table')
+        ) {
+            return NextResponse.json(
+                { error: 'Registration is temporarily unavailable. Server database is not ready yet.' },
+                { status: 503 }
+            );
+        }
+
+        return NextResponse.json({ error: 'Registration failed. Please try again.' }, { status: 500 });
     }
 }

@@ -37,6 +37,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
+    const normalizeAuthError = (message: string) => {
+        const m = message.toLowerCase();
+        if (m.includes('internal server error') || m.includes('temporarily unavailable')) {
+            return 'Service is temporarily unavailable. Please try again in a moment.';
+        }
+        return message;
+    };
+
     useEffect(() => {
         // Only access localStorage on client side
         if (typeof window !== 'undefined') {
@@ -64,7 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             body: JSON.stringify({ email, password }),
         });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Login failed');
+        if (!res.ok) throw new Error(normalizeAuthError(data.error || 'Login failed'));
         setUser(data.user);
         setToken(data.token);
 
@@ -83,7 +91,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             body: JSON.stringify(formData),
         });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Registration failed');
+        if (!res.ok) throw new Error(normalizeAuthError(data.error || 'Registration failed'));
         setUser(data.user);
         setToken(data.token);
 

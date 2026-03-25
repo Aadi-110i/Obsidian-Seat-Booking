@@ -38,6 +38,22 @@ export async function POST(req: NextRequest) {
         return response;
     } catch (error) {
         console.error('Login error:', error);
-        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+
+        const message = error instanceof Error ? error.message.toLowerCase() : '';
+
+        // Common deployment/runtime issues (missing or unreachable DB)
+        if (
+            message.includes('database_url') ||
+            message.includes('unable to open database file') ||
+            message.includes('readonly') ||
+            message.includes('no such table')
+        ) {
+            return NextResponse.json(
+                { error: 'Login is temporarily unavailable. Server database is not ready yet.' },
+                { status: 503 }
+            );
+        }
+
+        return NextResponse.json({ error: 'Login failed. Please try again.' }, { status: 500 });
     }
 }
