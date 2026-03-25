@@ -97,7 +97,7 @@ export default function DashboardPage() {
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="flex justify-between items-start relative z-10">
                         <div className="space-y-4">
-                            <div className="stat-label">Today's Seat</div>
+                            <div className="stat-label">Today&apos;s Seat</div>
                             <div className="stat-value font-mono">{todayBooking ? todayBooking.seat.seatNumber : '—'}</div>
                             {todayBooking ? (
                                 <div className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-green-500 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">

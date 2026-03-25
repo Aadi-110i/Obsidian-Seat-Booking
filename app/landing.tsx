@@ -168,7 +168,7 @@ export default function LandingPage() {
                     <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>1 week ago</span>
                   </div>
                   <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--text-primary)' }}>Performance Boost</h3>
-                  <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.5 }}>We've optimized our backend infrastructure to handle 10x more concurrent bookings without breaking a sweat.</p>
+                  <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.5 }}>We&apos;ve optimized our backend infrastructure to handle 10x more concurrent bookings without breaking a sweat.</p>
                 </div>
               </div>
             </div>
